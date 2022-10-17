@@ -31,6 +31,8 @@ struct Point
 
 void PongBegin();
 
+void SetBallDirection(int direction);
+
 void ReadJoysticks();
 
 void MoveBall();
@@ -43,7 +45,7 @@ void StartAfterScore();
 
 void WallChangeBallDirection();
 
-void PlayerChangeBallDirection()
+void PlayerChangeBallDirection();
 
 void Display();
 #endif

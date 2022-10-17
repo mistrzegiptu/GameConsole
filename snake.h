@@ -13,15 +13,13 @@
 //PINS
 #define joystickXPin 27
 #define joystickYPin 26
-#define randomSeedPin 28
-#define menuButton 22
 
 //JOYSTICK VALUES
 #define minJoystick 100
 #define midJoystick 512
 #define maxJoystick 923
 
-enum Direction
+enum SnakeDirections
 {
     UP = 1,
     DOWN = 2,

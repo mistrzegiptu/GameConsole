@@ -1,6 +1,6 @@
 #include "snake.h"
 
-Direction Dir = RIGHT;
+SnakeDirections Dir = RIGHT;
 
 S *head;
 S *tail;
@@ -18,6 +18,8 @@ void SnakeBegin()
     
     appleX = random(fixedWidth);
     appleY = random(fixedHeight);
+    
+    score = 0;
 }
 void MoveHead()
 {
