@@ -5,11 +5,12 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
 
-#define width 84
+#define width 83
 #define height 48
 
-#define joystick1YPin 26
-#define joystick2YPin 20
+#define joystick1YPin 27
+#define buttonUpPin 14
+#define buttonDownPin 15
 
 #define minUpValue 614
 #define minDownValue 409
@@ -31,8 +32,6 @@ struct Point
 
 void PongBegin();
 
-void SetBallDirection(int direction);
-
 void ReadJoysticks();
 
 void MoveBall();
@@ -46,6 +45,8 @@ void StartAfterScore();
 void WallChangeBallDirection();
 
 void PlayerChangeBallDirection();
+
+void SetBallDirection(int direction);
 
 void Display();
 #endif

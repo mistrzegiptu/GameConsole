@@ -85,11 +85,11 @@ void loop()
         }
         case 2:
         {
-            if(millis()-previousPongMove>=0)
+            if(millis()-previousPongMove>=50)
             {
+                Display();
                 ReadJoysticks();
                 MoveBall();
-                Display();
                 previousPongMove = millis();
             }
             break;

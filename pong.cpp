@@ -13,11 +13,12 @@ byte player2Score = 0;
 void PongBegin()
 {
     pinMode(joystick1YPin, INPUT);
-    pinMode(joystick2YPin, INPUT);
+    pinMode(buttonUpPin, INPUT_PULLUP);
+    pinMode(buttonDownPin, INPUT_PULLUP);
 
     SetBallDirection(random(1, 5));
 
-    ball.x = width/2;
+    ball.x = (int)width/2;
     ball.y = height/2;
 }
 void SetBallDirection(int direction)
@@ -34,24 +35,23 @@ void SetBallDirection(int direction)
 void ReadJoysticks()
 {
     int player1 = analogRead(joystick1YPin);
-    //int player2 = analogRead(joystick2YPin);
 
     if(player1>=minUpValue)
     {
-        firstPlayer++;
-    }
-    else if(player1>=minDownValue)
-    {
         firstPlayer--;
     }
-    /*if(player2>=minUpValue)
+    else if(player1<=minDownValue)
+    {
+        firstPlayer++;
+    }
+    if(digitalRead(buttonUpPin)==LOW)
     {
         secondPlayer++;
     }
-    else if(player2>=minDownValue)
+    else if(digitalRead(buttonDownPin)==LOW)
     {
         secondPlayer--;
-    }*/
+    }
 }
 void MoveBall()
 {
@@ -157,7 +157,15 @@ void Display()
 {
     display.clearDisplay();
 
+    display.drawPixel(ball.x+1, ball.y-1, 1);
+    display.drawPixel(ball.x+1, ball.y, 1);
+    display.drawPixel(ball.x+1, ball.y+1, 1);
+    display.drawPixel(ball.x, ball.y-1, 1);
     display.drawPixel(ball.x, ball.y, 1);
+    display.drawPixel(ball.x, ball.y+1, 1);
+    display.drawPixel(ball.x-1, ball.y+1, 1);
+    display.drawPixel(ball.x-1, ball.y, 1);
+    display.drawPixel(ball.x-1, ball.y-1, 1);
 
     display.drawPixel(0, firstPlayer, 1);
     display.drawPixel(0, firstPlayer+1, 1);
